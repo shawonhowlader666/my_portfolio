@@ -61,12 +61,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="theme-color" content="#06b6d4">
 
     <!-- Dynamic SEO Meta Tags -->
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $description }}">
     <meta name="keywords" content="Portfolio, Web Developer, Laravel, PHP, Tailwind CSS, Full Stack">
     <meta name="author" content="Shawon">
+    <link rel="canonical" href="{{ url()->current() }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -88,7 +91,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- DevIcons for Technology Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -97,14 +100,16 @@
         body {
             font-family: 'Outfit', sans-serif;
         }
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
     </style>
     <!-- SweetAlert2 for Beautiful Alerts -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Canvas Confetti for Celebration Animation -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-    
-    <!-- DevIcon -->
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased selection:bg-cyan-500 selection:text-white relative transition-colors duration-300">
     
@@ -143,71 +148,62 @@
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-            // Check for theme saved in localStorage or use default
-            const theme = localStorage.getItem('theme') || 'dark';
-            const isDark = theme === 'dark';
+            const loadParticles = async (isDark) => {
+                await tsParticles.load("tsparticles", {
+                    fullScreen: { enable: false },
+                    background: { color: { value: "transparent" } },
+                    fpsLimit: 60,
+                    interactivity: {
+                        events: {
+                            onHover: { enable: true, mode: "grab" },
+                            resize: true,
+                        },
+                        modes: {
+                            grab: {
+                                distance: 200,
+                                links: {
+                                    opacity: isDark ? 1 : 0.5,
+                                    color: isDark ? "#06b6d4" : "#0284c7"
+                                }
+                            },
+                        },
+                    },
+                    particles: {
+                        color: { value: isDark ? "#22d3ee" : "#0284c7" },
+                        links: {
+                            color: isDark ? "#0e7490" : "#cbd5e1",
+                            distance: 150,
+                            enable: true,
+                            opacity: isDark ? 0.5 : 0.3,
+                            width: 1,
+                        },
+                        move: {
+                            enable: true,
+                            speed: 1,
+                            direction: "none",
+                            random: false,
+                            straight: false,
+                            outModes: "bounce",
+                        },
+                        number: {
+                            density: { enable: true, area: 800 },
+                            value: 80,
+                        },
+                        opacity: { value: isDark ? 0.5 : 0.3 },
+                        shape: { type: "circle" },
+                        size: { value: { min: 1, max: 4 } },
+                    },
+                    detectRetina: true,
+                });
+            };
 
-            await tsParticles.load("tsparticles", {
-                fullScreen: { enable: false },
-                background: {
-                    color: { value: "transparent" },
-                },
-                fpsLimit: 60,
-                interactivity: {
-                    events: {
-                        onHover: {
-                            enable: true,
-                            mode: "grab",
-                        },
-                        resize: true,
-                    },
-                    modes: {
-                        grab: {
-                            distance: 200,
-                            links: {
-                                opacity: isDark ? 1 : 0.5,
-                                color: isDark ? "#06b6d4" : "#0284c7" // Dark: Cyan-500, Light: Sky-600
-                            }
-                        },
-                    },
-                },
-                particles: {
-                    color: {
-                        value: isDark ? "#22d3ee" : "#0284c7", // Dark: Cyan-400, Light: Sky-600
-                    },
-                    links: {
-                        color: isDark ? "#0e7490" : "#cbd5e1", // Dark: Cyan-700, Light: Slate-300
-                        distance: 150,
-                        enable: true,
-                        opacity: isDark ? 0.5 : 0.3,
-                        width: 1,
-                    },
-                    move: {
-                        enable: true,
-                        speed: 1,
-                        direction: "none",
-                        random: false,
-                        straight: false,
-                        outModes: "bounce",
-                    },
-                    number: {
-                        density: {
-                            enable: true,
-                            area: 800,
-                        },
-                        value: 80,
-                    },
-                    opacity: {
-                        value: isDark ? 0.5 : 0.3,
-                    },
-                    shape: {
-                        type: "circle",
-                    },
-                    size: {
-                        value: { min: 1, max: 4 },
-                    },
-                },
-                detectRetina: true,
+            const theme = localStorage.getItem('theme') || 'dark';
+            await loadParticles(theme === 'dark');
+
+            // Listen for theme changes to reload particles
+            window.addEventListener('theme-changed', async (e) => {
+                const isDark = e.detail === 'dark';
+                await loadParticles(isDark);
             });
         });
     </script>

@@ -16,7 +16,6 @@ const lenis = new Lenis({
 });
 
 // Scroll Animation Logic
-// Scroll Animation Logic
 document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {
         threshold: 0.1,

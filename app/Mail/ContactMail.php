@@ -1,4 +1,4 @@
-<?php
+declare(strict_types=1);
 
 namespace App\Mail;
 
@@ -9,16 +9,28 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
+/**
+ * Class ContactMail
+ * 
+ * Mailable for sending contact form submissions.
+ * 
+ * @package App\Mail
+ */
 class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
+    /**
+     * @var array
+     */
+    public array $data;
 
     /**
      * Create a new message instance.
+     * 
+     * @param array $data
      */
-    public function __construct($data)
+    public function __construct(array $data)
     {
         $this->data = $data;
     }

@@ -1,5 +1,8 @@
 <!-- About Section -->
-<section id="about" class="py-16 bg-white dark:bg-gray-900/50 relative transition-colors duration-300">
+<section id="about" class="py-16 bg-white dark:bg-gray-900/50 relative transition-colors duration-300 overflow-hidden">
+    <!-- Ambient Glows -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div class="relative group flex justify-center md:justify-start items-start scroll-animate">

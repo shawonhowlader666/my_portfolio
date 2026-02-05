@@ -1,22 +1,37 @@
-<?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\RedirectResponse;
 use App\Mail\ContactMail;
 
+/**
+ * Class ContactController
+ * 
+ * Handles contact form submissions with spam protection and email delivery.
+ * 
+ * @package App\Http\Controllers
+ */
 class ContactController extends Controller
 {
-    public function sendEmail(Request $request)
+    /**
+     * Handle the incoming contact form request.
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function sendEmail(Request $request): RedirectResponse
     {
-        // 🍯 Honeypot Check - If filled, it's a bot!
-        if (!empty($request->website)) {
-            // Silently reject (don't tell the bot it failed)
+        // 🍯 Honeypot Check - If the hidden 'website' field is filled, it's a bot!
+        if ($request->filled('website')) {
+            // Silently reject (act as if successful to fool the bot)
             return back()->with('success', 'Message sent successfully!');
         }
 
-        $request->validate([
+        // Validate Input
+        $validated = $request->validate([
             'name' => 'required|string|max:100',
             'email' => 'required|email:rfc,dns|max:255',
             'phone' => 'nullable|string|max:20',
@@ -24,16 +39,25 @@ class ContactController extends Controller
             'terms' => 'accepted'
         ]);
 
+        // Process Phone Number (Avoid double prefixing)
+        $phone = $validated['phone'] ?? null;
+        if ($phone) {
+            // Remove any existing +880 or 880 to sanitize
+            $cleanPhone = preg_replace('/^(\+880|880|0)/', '', $phone);
+            $phone = '+880' . $cleanPhone;
+        }
+
         $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone ? '+880' . $request->phone : null, // Auto-add prefix
-            'message' => $request->message
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $phone,
+            'message' => $validated['message']
         ];
 
-        // Replace with your actual email address
+        // Send Email
+        // Note: In a high-traffic production app, use Queue: Mail::to(...)->queue(...);
         Mail::to('shawonhawlader1044@gmail.com')->send(new ContactMail($data));
 
-        return back()->with('success', 'Message sent successfully!');
+        return back()->with('success', 'Thank you! Your message has been sent successfully.');
     }
 }

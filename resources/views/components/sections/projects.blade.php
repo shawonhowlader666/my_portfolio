@@ -1,7 +1,10 @@
 @props(['projects'])
 
 <!-- Projects Section -->
-<section id="projects" class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+<section id="projects" class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300 relative overflow-hidden">
+    <!-- Ambient Glows -->
+    <div class="absolute top-20 left-0 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+    <div class="absolute bottom-20 right-0 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 scroll-animate text-gray-900 dark:text-white">Featured Projects</h2>

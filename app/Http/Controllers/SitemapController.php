@@ -1,18 +1,31 @@
-<?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Response;
 
+/**
+ * Class SitemapController
+ * 
+ * Generates XML Sitemap for SEO.
+ * 
+ * @package App\Http\Controllers
+ */
 class SitemapController extends Controller
 {
-    public function index()
+    /**
+     * Generate and return the sitemap XML.
+     *
+     * @return Response
+     */
+    public function index(): Response
     {
         $projects = Project::all();
 
         // Start XML string
-        $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+        // Broken into parts to prevent PHP short tag confusion
+        $xml = '<' . '?xml version="1.0" encoding="UTF-8"?' . '>';
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 
         // Static URL: Home
@@ -27,7 +40,7 @@ class SitemapController extends Controller
         foreach ($projects as $project) {
             $xml .= '<url>';
             $xml .= '<loc>' . route('projects.show', $project->slug) . '</loc>';
-            $xml .= '<lastmod>' . $project->updated_at->toAtomString() . '</lastmod>';
+            $xml .= '<lastmod>' . ($project->updated_at?->toAtomString() ?? now()->toAtomString()) . '</lastmod>';
             $xml .= '<changefreq>weekly</changefreq>';
             $xml .= '<priority>0.8</priority>';
             $xml .= '</url>';
