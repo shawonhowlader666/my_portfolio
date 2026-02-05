@@ -69,7 +69,7 @@
     <meta name="keywords" content="Portfolio, Web Developer, Laravel, PHP, Tailwind CSS, Full Stack">
     <meta name="author" content="Shawon">
     <link rel="canonical" href="{{ url()->current() }}">
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
