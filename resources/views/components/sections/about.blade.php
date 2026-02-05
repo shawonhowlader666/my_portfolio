@@ -13,7 +13,7 @@
                     
                     <!-- Main Image (Borderless) -->
                     <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="{{ asset('images/profile.png') }}" 
+                        <img src="/images/profile.png" 
                              alt="Shawon" 
                              class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out block">
                          
@@ -42,7 +42,7 @@
                             <!-- Static Center Icon (Code Symbol) -->
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-lg z-10 overflow-hidden bg-gradient-to-tr from-cyan-500 to-blue-600">
-                                    <img src="{{ asset('images/boy_laptop.png') }}" alt="Coding" class="w-full h-full object-cover">
+                                    <img src="/images/boy_laptop.png" alt="Coding" class="w-full h-full object-cover">
                                 </div>
                             </div>
                         </div>

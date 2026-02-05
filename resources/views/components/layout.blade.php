@@ -1,7 +1,7 @@
 @props([
     'title' => 'Shawon - Professional Portfolio', 
     'description' => 'Professional Full Stack Developer Portfolio',
-    'image' => asset('images/og-image.jpg')
+    'image' => '/images/og-image.jpg'
 ])
 
 <!DOCTYPE html>
@@ -69,7 +69,7 @@
     <meta name="keywords" content="Portfolio, Web Developer, Laravel, PHP, Tailwind CSS, Full Stack">
     <meta name="author" content="Shawon">
     <link rel="canonical" href="{{ url()->current() }}">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">

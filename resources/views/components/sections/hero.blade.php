@@ -19,7 +19,7 @@
             <!-- Action Buttons -->
             <div class="flex flex-col sm:flex-row gap-5">
                 <!-- Download Resume (Solid Gradient) -->
-                <a href="{{ asset('images/resume.pdf') }}" download class="group relative inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:-translate-y-1 gap-2">
+                <a href="/images/resume.pdf" download class="group relative inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:-translate-y-1 gap-2">
                     <span>My Resume</span>
                     <svg class="w-5 h-5 group-hover:animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                 </a>

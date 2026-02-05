@@ -21,7 +21,7 @@
                 <!-- Project Image / Placeholder -->
                 <div class="relative aspect-video w-full overflow-hidden bg-gray-900 group border-b border-gray-100 dark:border-gray-700">
                     @if($project->image)
-                        <img src="{{ Str::startsWith($project->image, 'images/') ? asset($project->image) : asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <img src="{{ Str::startsWith($project->image, 'images') ? '/' . $project->image : '/images/' . $project->image }}" alt="{{ $project->title }}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                     @else
                         <!-- Stylish Placeholder Pattern -->
                         <div class="w-full h-full bg-gray-50 dark:bg-[#111827] relative flex items-center justify-center overflow-hidden transition-colors duration-300">
