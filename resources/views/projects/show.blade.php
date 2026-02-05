@@ -1,4 +1,4 @@
-<x-layout :title="$project->title . ' - Project Details'" :description="$project->description">
+<x-layout :title="$project->title . ' - Project Details'" :description="$project->description" :image="$project->image">
     <!-- Hero Section for Project -->
     <div class="relative pt-32 pb-20 overflow-hidden bg-gray-50 dark:bg-[#050B14] transition-colors duration-300">
         <!-- Background Elements -->
@@ -23,7 +23,7 @@
                     <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
                         {{ $project->title }}
                     </h1>
-                    <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+                    <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8 text-justify">
                         {{ $project->description }}
                     </p>
 
@@ -64,7 +64,7 @@
                     <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-1000"></div>
                     <div class="relative bg-gray-900 rounded-xl overflow-hidden shadow-2xl aspect-video">
                         @if($project->image)
-                            <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="w-full h-full object-cover">
+                            <img src="{{ Str::startsWith($project->image, 'images/') ? asset($project->image) : asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
                         @else
                             <div class="w-full h-full bg-gray-800 flex items-center justify-center">
                                 <div class="text-center">

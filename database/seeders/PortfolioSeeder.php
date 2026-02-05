@@ -57,7 +57,7 @@ class PortfolioSeeder extends Seeder
                 'description' => 'Developed a full-stack student management with responsive user interface for all device sizes. Implemented student registration, course management, and result handling features. Used MySQL database with optimized SQL queries for fast data access. Added secure login and role-based access for admin and staff users.',
                 'image' => null,
                 'live_link' => null,
-                'github_link' => 'https://github.com/Error000000000',
+                'github_link' => 'https://github.com/shawonhowlader666/class_managementtt',
                 'tech_stack' => ['PHP', 'Laravel', 'MySQL', 'HTML', 'CSS', 'JS', 'Bootstrap'],
                 'featured' => true,
                 'sort_order' => 1
@@ -66,9 +66,9 @@ class PortfolioSeeder extends Seeder
                 'title' => 'Cycle Selling Website',
                 'slug' => 'cycle-selling-website',
                 'description' => 'Developed an e-commerce website for online cycle selling with a clean and responsive design. Implemented product listing and shopping cart features for smooth customer purchases. Built an admin panel to manage cycle products and pricing. Used MySQL database to store and manage product and order data.',
-                'image' => null,
+                'image' => 'images/cycle.png',
                 'live_link' => null,
-                'github_link' => 'https://github.com/Error000000000',
+                'github_link' => 'https://github.com/shawonhowlader666/Cycle',
                 'tech_stack' => ['PHP', 'Laravel', 'HTML', 'Tailwind CSS', 'JS', 'MySQL'],
                 'featured' => true,
                 'sort_order' => 2
@@ -79,7 +79,7 @@ class PortfolioSeeder extends Seeder
                 'description' => 'Developed a system to analyze fingerprint images for blood group prediction. Applied data preprocessing and feature extraction techniques. Evaluated model performance and planned web-based integration.',
                 'image' => null,
                 'live_link' => null,
-                'github_link' => null,
+                'github_link' => 'https://colab.research.google.com/drive/1FEQTdOX7gBy_OvefSaYbyXHWY5Mi0h06#scrollTo=V-H_EUjVLEgS',
                 'tech_stack' => ['Python', 'Machine Learning', 'Image Processing'],
                 'featured' => true,
                 'sort_order' => 3

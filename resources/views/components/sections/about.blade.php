@@ -54,7 +54,7 @@
                 
                 <div class="scroll-animate">
                     <h3 class="text-xl font-bold text-cyan-600 dark:text-cyan-400 mb-4">Professional Summary</h3>
-                    <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8">
+                    <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8 text-justify">
                         Recent graduate with a Bachelor of Science in Computer Science and Engineering, offering hands-on experience in full stack web development and database management. Skilled in <span class="text-gray-900 dark:text-white font-medium">PHP, Laravel, MySQL, HTML, CSS, Bootstrap, Tailwind, and Firebase</span> with a demonstrated ability to manage projects and enhance user experiences through responsive design and streamlined processes. Gained practical experience as a Customer Service Representative, improving service efficiency and client engagement. Eager to leverage technical skills and problem-solving abilities in a full-time position within a technology-driven environment.
                     </p>
                 </div>

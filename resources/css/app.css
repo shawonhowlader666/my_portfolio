@@ -101,6 +101,16 @@
     .lenis.lenis-scrolling iframe {
         pointer-events: none;
     }
+
+    /* Professional Justified Text (No Ugly Gaps) */
+    .text-justify-balanced {
+        text-align: justify;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        word-break: break-word;
+        text-align-last: left;
+    }
 }
 
 /* Base styles */

@@ -1,4 +1,8 @@
-@props(['title' => 'Shawon - Professional Portfolio', 'description' => 'Professional Full Stack Developer Portfolio'])
+@props([
+    'title' => 'Shawon - Professional Portfolio', 
+    'description' => 'Professional Full Stack Developer Portfolio',
+    'image' => asset('images/og-image.jpg')
+])
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth dark" 
@@ -69,14 +73,14 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="{{ $title }}">
     <meta property="og:description" content="{{ $description }}">
-    <meta property="og:image" content="{{ asset('images/og-image.jpg') }}">
+    <meta property="og:image" content="{{ $image }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
     <meta property="twitter:title" content="{{ $title }}">
     <meta property="twitter:description" content="{{ $description }}">
-    <meta property="twitter:image" content="{{ asset('images/twitter-card.jpg') }}">
+    <meta property="twitter:image" content="{{ $image }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

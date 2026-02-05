@@ -55,6 +55,11 @@
                 <form action="{{ route('contact.send') }}" method="POST" class="space-y-4">
                     @csrf
                     
+                    <!-- 🍯 Honeypot Field (Bot Trap - Hidden from humans) -->
+                    <div style="position: absolute; left: -9999px; top: -9999px;" aria-hidden="true">
+                        <input type="text" name="website" tabindex="-1" autocomplete="off" placeholder="Leave empty">
+                    </div>
+                    
                     @if(session('success'))
                         <script>
                             document.addEventListener('DOMContentLoaded', () => {
@@ -94,36 +99,34 @@
                     @endif
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="space-y-1 group">
-                                <label class="text-xs font-semibold text-gray-500 uppercase transition-all duration-300 group-focus-within:text-gray-300 group-focus-within:scale-110 origin-left block">Name</label>
-                                <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-2 rounded-md bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all">
+                                <label for="name" class="text-xs font-semibold text-gray-500 uppercase transition-all duration-300 group-focus-within:text-gray-300 group-focus-within:scale-110 origin-left block">Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name" class="w-full px-4 py-2 rounded-md bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all">
                             </div>
                             <div class="space-y-1 group">
-                                <label class="text-xs font-semibold text-gray-500 uppercase transition-all duration-300 group-focus-within:text-gray-300 group-focus-within:scale-110 origin-left block">Phone</label>
+                                <label for="phone" class="text-xs font-semibold text-gray-500 uppercase transition-all duration-300 group-focus-within:text-gray-300 group-focus-within:scale-110 origin-left block">Phone</label>
                                 <div class="relative">
                                     <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-medium group-focus-within:text-gray-300 transition-colors">+880</span>
-                                    <input type="text" name="phone" placeholder="" class="w-full pl-16 pr-4 py-2 rounded-md bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all">
+                                    <input type="text" id="phone" name="phone" placeholder="" autocomplete="tel" class="w-full pl-16 pr-4 py-2 rounded-md bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all">
                                 </div>
                             </div>
                         </div>
 
                         <div class="space-y-1 group">
-                            <label class="text-xs font-semibold text-gray-500 uppercase transition-all duration-300 group-focus-within:text-gray-300 group-focus-within:scale-110 origin-left block">Email</label>
-                            <input type="email" name="email" placeholder="shawon@example.com" required class="w-full px-4 py-2 rounded-md bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all">
+                            <label for="email" class="text-xs font-semibold text-gray-500 uppercase transition-all duration-300 group-focus-within:text-gray-300 group-focus-within:scale-110 origin-left block">Email</label>
+                            <input type="email" id="email" name="email" placeholder="shawon@example.com" required autocomplete="email" class="w-full px-4 py-2 rounded-md bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all">
                         </div>
 
                         <div class="space-y-1 group">
-                            <label class="text-xs font-semibold text-gray-500 uppercase transition-all duration-300 group-focus-within:text-gray-300 group-focus-within:scale-110 origin-left block">Project Details</label>
-                            <textarea name="message" rows="4" placeholder="Tell me about your project..." required class="w-full px-4 py-2 rounded-md bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all resize-none"></textarea>
+                            <label for="message" class="text-xs font-semibold text-gray-500 uppercase transition-all duration-300 group-focus-within:text-gray-300 group-focus-within:scale-110 origin-left block">Project Details</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell me about your project..." required class="w-full px-4 py-2 rounded-md bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all resize-none"></textarea>
                         </div>
 
                         <div class="flex items-start gap-2 pt-2">
-                            <input type="checkbox" id="terms" name="terms" required 
-                                   oninvalid="this.setCustomValidity('Please accept the Terms and Conditions to proceed')"
-                                   oninput="this.setCustomValidity('')"
-                                   class="mt-1 w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                            <label for="terms" class="text-xs text-gray-500 leading-tight select-none">I have read and acknowledge the Terms and Conditions</label>
+                            <input type="checkbox" name="terms" id="terms" required class="mt-1 w-4 h-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500 transition-all">
+                            <label for="terms" class="text-sm text-gray-500 dark:text-gray-400">
+                                I agree to the <a href="{{ route('terms') }}" target="_blank" class="text-cyan-600 dark:text-cyan-400 hover:underline">Terms and Conditions</a> and <a href="{{ route('privacy') }}" target="_blank" class="text-cyan-600 dark:text-cyan-400 hover:underline">Privacy Policy</a>.
+                            </label>
                         </div>
-
                         <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md shadow-lg shadow-blue-500/30 transition-all transform hover:-translate-y-1">
                             Submit Inquiry
                         </button>

@@ -7,7 +7,13 @@ use App\Http\Controllers\ChatbotController;
 
 Route::get('/', [PortfolioController::class, 'index'])->name('home');
 Route::get('/projects/{slug}', [PortfolioController::class, 'show'])->name('projects.show');
-Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.send');
-Route::post('/chat', [ChatbotController::class, 'chat'])->name('chat');
-Route::post('/subscribe', [\App\Http\Controllers\SubscriberController::class, 'store'])->name('subscribe');
+
+// Protected Routes with Rate Limiting (5 requests per minute)
+Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.send')->middleware('throttle:5,1');
+Route::post('/chat', [ChatbotController::class, 'chat'])->name('chat')->middleware('throttle:10,1');
+Route::post('/subscribe', [\App\Http\Controllers\SubscriberController::class, 'store'])->name('subscribe')->middleware('throttle:3,1');
 Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index']);
+
+// Legal Pages
+Route::view('/terms', 'pages.terms')->name('terms');
+Route::view('/privacy', 'pages.privacy')->name('privacy');

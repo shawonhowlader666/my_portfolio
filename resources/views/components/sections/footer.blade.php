@@ -44,7 +44,7 @@
                         <i class="devicon-facebook-plain"></i>
                     </a>
                     <!-- GitHub (Replaced Twitter) -->
-                    <a href="https://github.com/Error000000000" target="_blank" class="w-10 h-10 bg-gray-100 dark:bg-gray-800 flex items-center justify-center rounded transition hover:bg-black text-gray-600 dark:text-gray-400 hover:text-white">
+                    <a href="https://github.com/shawonhowlader666" target="_blank" class="w-10 h-10 bg-gray-100 dark:bg-gray-800 flex items-center justify-center rounded transition hover:bg-black text-gray-600 dark:text-gray-400 hover:text-white">
                         <i class="devicon-github-original"></i>
                     </a>
                     <!-- LinkedIn -->
@@ -60,7 +60,7 @@
                 <div class="space-y-8 scroll-animate">
                 <div>
                     <h4 class="text-lg font-bold mb-2">Detailed Updates</h4>
-                    <p class="text-gray-400 text-sm leading-relaxed">
+                    <p class="text-gray-400 text-sm leading-relaxed text-justify">
                         Subscribe to get the latest updates on my projects, skills, and new technologies I'm working with.
                     </p>
                 </div>

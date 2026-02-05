@@ -10,11 +10,17 @@ class ContactController extends Controller
 {
     public function sendEmail(Request $request)
     {
+        // 🍯 Honeypot Check - If filled, it's a bot!
+        if (!empty($request->website)) {
+            // Silently reject (don't tell the bot it failed)
+            return back()->with('success', 'Message sent successfully!');
+        }
+
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'nullable|string',
-            'message' => 'required',
+            'name' => 'required|string|max:100',
+            'email' => 'required|email:rfc,dns|max:255',
+            'phone' => 'nullable|string|max:20',
+            'message' => 'required|string|max:2000',
             'terms' => 'accepted'
         ]);
 
