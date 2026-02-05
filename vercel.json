@@ -13,7 +13,7 @@
             "dest": "/public/build/$1"
         },
         {
-            "src": "/(favicon\\.(ico|svg)|robots\\.txt|sitemap\\.xml)",
+            "src": "/(favicon\\.(ico|svg)|robots\\.txt|sitemap\\.xml|images/.*)",
             "dest": "/public/$1"
         },
         {
