@@ -3,7 +3,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build && mkdir -p dist",
+        "build": "composer dump-autoload && vite build && mkdir -p dist",
         "dev": "vite"
     },
     "devDependencies": {
