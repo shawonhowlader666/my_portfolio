@@ -120,7 +120,7 @@
     <!-- Canvas Confetti for Celebration Animation -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased selection:bg-cyan-500 selection:text-white relative transition-colors duration-300">
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased selection:bg-cyan-500 selection:text-white relative transition-colors duration-300" style="background-color: #0f172a; color: #f3f4f6;">
     
     <!-- Preloader -->
     <div x-init="window.addEventListener('load', () => { setTimeout(() => loaded = true, 500) })" 
