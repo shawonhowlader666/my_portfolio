@@ -25,20 +25,15 @@ class PortfolioController extends Controller
      */
     public function index(): View
     {
-        try {
-            // Try to fetch from Database first
-            $skills = Skill::all();
-            $projects = Project::orderBy('sort_order')->get();
+        // Fetch skills from config (converted to objects for consistency)
+        $skills = collect(config('portfolio.skills'))->map(function($skill) {
+            return (object) $skill;
+        });
 
-            // Double check: If DB returns empty (which might happen if tables are missing), use fallback
-            if ($skills->isEmpty()) {
-                throw new \Exception('No skills in DB');
-            }
-        } catch (\Exception $e) {
-            // Fallback: Use config data so the site IS NEVER EMPTY
-            $skills = collect(config('portfolio.skills'))->map(function($item) { return (object)$item; });
-            $projects = collect(config('portfolio.projects'))->map(function($item) { return (object)$item; });
-        }
+        // Fetch projects from config
+        $projects = collect(config('portfolio.projects'))->map(function($project) {
+            return (object) $project;
+        });
 
         return view('welcome', compact('skills', 'projects'));
     }

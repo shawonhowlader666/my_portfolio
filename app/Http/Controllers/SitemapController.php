@@ -21,11 +21,10 @@ class SitemapController extends Controller
      */
     public function index(): Response
     {
-        try {
-            $projects = Project::all();
-        } catch (\Exception $e) {
-            $projects = collect([]);
-        }
+        // Fetch projects from config
+        $projects = collect(config('portfolio.projects'))->map(function($project) {
+            return (object) $project;
+        });
 
         // Start XML string
         // Broken into parts to prevent PHP short tag confusion
