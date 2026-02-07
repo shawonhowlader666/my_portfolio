@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth dark" 
       x-data="{
-          theme: localStorage.getItem('theme') || 'dark',
+          theme: localStorage.getItem('theme') === 'light' ? 'light' : 'dark',
           mobileMenuOpen: false,
           scrolldown: false,
           scrollProgress: 0,
@@ -197,7 +197,7 @@
                 });
             };
 
-            const theme = localStorage.getItem('theme') || 'dark';
+            const theme = localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
             await loadParticles(theme === 'dark');
 
             // Listen for theme changes to reload particles
