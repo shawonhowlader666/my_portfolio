@@ -1,3 +1,5 @@
+<?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
@@ -8,13 +10,13 @@ use Illuminate\Http\RedirectResponse;
 use App\Mail\ContactMail;
 
 /**
- * Class ContactController
+ * Class WebContactController
  * 
  * Handles contact form submissions with spam protection and email delivery.
  * 
  * @package App\Http\Controllers
  */
-class ContactController extends Controller
+class WebContactController extends Controller
 {
     /**
      * Handle the incoming contact form request.
