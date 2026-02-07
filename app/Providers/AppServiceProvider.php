@@ -21,6 +21,12 @@ class AppServiceProvider extends ServiceProvider
     {
         if ($this->app->environment('production')) {
             \Illuminate\Support\Facades\URL::forceScheme('https');
+            
+            // FORCE DISABLE DATABASE CACHE/SESSION ON VERCEL
+            // This prevents "Internal Server Error" when SQLite is missing
+            config(['cache.default' => 'array']);
+            config(['session.driver' => 'cookie']);
+            config(['queue.default' => 'sync']);
         }
     }
 }

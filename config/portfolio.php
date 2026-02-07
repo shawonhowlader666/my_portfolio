@@ -3,11 +3,11 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Portfolio Skills
+    | Portfolio Skills (Fallback Data)
     |--------------------------------------------------------------------------
     |
-    | Add your skills here. Each skill should have a name, proficiency (0-100),
-    | category (frontend, backend, database, tools), and a devicon class.
+    | This data is used ONLY if the database connection fails on Vercel.
+    | It ensures the site never looks empty.
     |
     */
     'skills' => [
@@ -57,21 +57,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Portfolio Projects
+    | Portfolio Projects (Fallback Data)
     |--------------------------------------------------------------------------
-    |
-    | Add your projects here. Images should be in 'public/images/'.
-    |
     */
     'projects' => [
         [
             'title' => 'E-Commerce Platform',
             'slug' => 'e-commerce-platform',
             'description' => 'A robust multi-vendor e-commerce solution built with Laravel and Vue.js. Features include secure payment processing, real-time order tracking, and an admin dashboard.',
-            'image' => 'images/project1.jpg', // Place your image in public/images/ folder
-            'tech_stack' => ['Laravel', 'Vue.js', 'MySQL', 'Stripe'],
+            'image' => 'images/project1.jpg',
+            'tech_stack' => ['Laravel', 'Vue.js', 'MySQL'],
             'live_link' => '#',
-            'github_link' => 'https://github.com/yourusername/ecommerce'
+            'github_link' => '#',
+            'sort_order' => 1
         ],
         [
             'title' => 'Personal Portfolio',
@@ -80,16 +78,8 @@ return [
             'image' => 'images/project2.jpg',
             'tech_stack' => ['Laravel', 'Alpine.js', 'Tailwind CSS'],
             'live_link' => '#',
-            'github_link' => 'https://github.com/yourusername/portfolio'
-        ],
-        [
-            'title' => 'Hospital Management System',
-            'slug' => 'hospital-management',
-            'description' => 'Comprehensive management system for hospitals including patient records, doctor scheduling, and billing management.',
-            'image' => 'images/student_management.png',
-            'tech_stack' => ['PHP', 'MySQL', 'Bootstrap'],
-            'live_link' => '#',
-            'github_link' => '#'
-        ],
+            'github_link' => '#',
+            'sort_order' => 2
+        ]
     ],
 ];

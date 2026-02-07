@@ -26,15 +26,18 @@ class PortfolioController extends Controller
     public function index(): View
     {
         try {
-            // Fetch all skills
+            // Try to fetch from Database first
             $skills = Skill::all();
-            
-            // Fetch projects ordered by display priority
             $projects = Project::orderBy('sort_order')->get();
-        } catch (\Illuminate\Database\QueryException $e) {
-            // Fallback for Vercel if database is missing
-            $skills = collect([]);
-            $projects = collect([]);
+
+            // Double check: If DB returns empty (which might happen if tables are missing), use fallback
+            if ($skills->isEmpty()) {
+                throw new \Exception('No skills in DB');
+            }
+        } catch (\Exception $e) {
+            // Fallback: Use config data so the site IS NEVER EMPTY
+            $skills = collect(config('portfolio.skills'))->map(function($item) { return (object)$item; });
+            $projects = collect(config('portfolio.projects'))->map(function($item) { return (object)$item; });
         }
 
         return view('welcome', compact('skills', 'projects'));
