@@ -25,11 +25,17 @@ class PortfolioController extends Controller
      */
     public function index(): View
     {
-        // Fetch all skills
-        $skills = Skill::all();
-        
-        // Fetch projects ordered by display priority
-        $projects = Project::orderBy('sort_order')->get();
+        try {
+            // Fetch all skills
+            $skills = Skill::all();
+            
+            // Fetch projects ordered by display priority
+            $projects = Project::orderBy('sort_order')->get();
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Fallback for Vercel if database is missing
+            $skills = collect([]);
+            $projects = collect([]);
+        }
 
         return view('welcome', compact('skills', 'projects'));
     }
