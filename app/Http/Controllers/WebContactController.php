@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
-use App\Mail\ContactMail;
+use App\Mail\PortfolioContactMail;
 
 /**
  * Class WebContactController
@@ -58,7 +58,7 @@ class WebContactController extends Controller
 
         // Send Email with Safety
         try {
-            Mail::to('shawonhawlader1044@gmail.com')->send(new ContactMail($data));
+            Mail::to('shawonhawlader1044@gmail.com')->send(new PortfolioContactMail($data));
         } catch (\Exception $e) {
             // Silently fail but log error if needed
             // return back()->with('success', 'Message sent successfully!');
