@@ -60,10 +60,13 @@
 <head>
     <script>
         // Immediately apply dark mode to prevent flash
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage))) {
-            document.documentElement.classList.add('dark');
-        } else {
+        if (localStorage.getItem('theme') === 'light') {
             document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
+            if (!localStorage.getItem('theme')) {
+                localStorage.setItem('theme', 'dark');
+            }
         }
     </script>
     <meta charset="utf-8">
