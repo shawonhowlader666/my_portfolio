@@ -25,13 +25,17 @@ class PortfolioController extends Controller
      */
     public function index(): View
     {
-        // Robustly convert array to object (deep conversion)
-        $skillsData = config('portfolio.skills', []);
-        $projectsData = config('portfolio.projects', []);
-
-        // Use json_encode/decode ensuring deep object conversion
-        $skills = collect(json_decode(json_encode($skillsData)));
-        $projects = collect(json_decode(json_encode($projectsData)));
+        try {
+            // Fetch all skills
+            $skills = Skill::all();
+            
+            // Fetch projects ordered by display priority
+            $projects = Project::orderBy('sort_order')->get();
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Fallback for Vercel if database is missing
+            $skills = collect([]);
+            $projects = collect([]);
+        }
 
         return view('welcome', compact('skills', 'projects'));
     }
