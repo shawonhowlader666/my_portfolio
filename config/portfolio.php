@@ -62,24 +62,34 @@ return [
     */
     'projects' => [
         [
-            'title' => 'E-Commerce Platform',
-            'slug' => 'e-commerce-platform',
-            'description' => 'A robust multi-vendor e-commerce solution built with Laravel and Vue.js. Features include secure payment processing, real-time order tracking, and an admin dashboard.',
-            'image' => 'images/project1.jpg',
-            'tech_stack' => ['Laravel', 'Vue.js', 'MySQL'],
+            'title' => 'Student Management System',
+            'slug' => 'student-management-system',
+            'description' => 'A comprehensive student management system built with Laravel. It features student registration, course enrollment, grade management, and attendance tracking.',
+            'image' => 'images/student_management.png',
+            'tech_stack' => ['Laravel', 'MySQL', 'Bootstrap'],
             'live_link' => '#',
             'github_link' => '#',
             'sort_order' => 1
         ],
         [
-            'title' => 'Personal Portfolio',
-            'slug' => 'personal-portfolio',
-            'description' => 'A sleek, responsive portfolio website featuring a dynamic blog, project showcase, and an integrated AI chatbot for visitor interaction.',
-            'image' => 'images/project2.jpg',
-            'tech_stack' => ['Laravel', 'Alpine.js', 'Tailwind CSS'],
+            'title' => 'AI Fingerprint Analysis',
+            'slug' => 'ai-fingerprint-analysis',
+            'description' => 'An innovative AI-powered system for analyzing fingerprint patterns. Leveraging machine learning models to identify unique features with high accuracy.',
+            'image' => 'images/fingerprint_ai.jpg',
+            'tech_stack' => ['Python', 'TensorFlow', 'OpenCV'],
             'live_link' => '#',
             'github_link' => '#',
             'sort_order' => 2
+        ],
+        [
+            'title' => 'Personal Portfolio',
+            'slug' => 'personal-portfolio',
+            'description' => 'My personal portfolio website built with Laravel and Tailwind CSS. Showcasing my skills, projects, and providing a way for clients to contact me.',
+            'image' => 'images/boy_laptop.png', // Using existing asset as placeholder
+            'tech_stack' => ['Laravel', 'Tailwind CSS', 'Alpine.js'],
+            'live_link' => '#',
+            'github_link' => '#',
+            'sort_order' => 3
         ]
     ],
 ];

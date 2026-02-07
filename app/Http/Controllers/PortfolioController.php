@@ -25,15 +25,13 @@ class PortfolioController extends Controller
      */
     public function index(): View
     {
-        // Fetch skills from config (converted to objects for consistency)
-        $skills = collect(config('portfolio.skills'))->map(function($skill) {
-            return (object) $skill;
-        });
+        // Robustly convert array to object (deep conversion)
+        $skillsData = config('portfolio.skills', []);
+        $projectsData = config('portfolio.projects', []);
 
-        // Fetch projects from config
-        $projects = collect(config('portfolio.projects'))->map(function($project) {
-            return (object) $project;
-        });
+        // Use json_encode/decode ensuring deep object conversion
+        $skills = collect(json_decode(json_encode($skillsData)));
+        $projects = collect(json_decode(json_encode($projectsData)));
 
         return view('welcome', compact('skills', 'projects'));
     }
