@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth dark" 
       x-data="{
-          theme: localStorage.getItem('portfolio_theme') === 'light' ? 'light' : 'dark',
+          theme: localStorage.getItem('theme') === 'light' ? 'light' : 'dark',
           mobileMenuOpen: false,
           scrolldown: false,
           scrollProgress: 0,
@@ -16,7 +16,7 @@
           
           toggleTheme() {
               this.theme = this.theme === 'dark' ? 'light' : 'dark';
-              localStorage.setItem('portfolio_theme', this.theme);
+              localStorage.setItem('theme', this.theme);
               if (this.theme === 'dark') {
                   document.documentElement.classList.add('dark');
               } else {
@@ -58,15 +58,6 @@
           updateActive();
       ">
 <head>
-    <script>
-        // Nuclear Option: Force Dark Mode by resetting key to 'portfolio_theme'
-        if (localStorage.getItem('portfolio_theme') === 'light') {
-            document.documentElement.classList.remove('dark');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('portfolio_theme', 'dark');
-        }
-    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -120,7 +111,7 @@
     <!-- Canvas Confetti for Celebration Animation -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased selection:bg-cyan-500 selection:text-white relative transition-colors duration-300" style="background-color: #0f172a; color: #f3f4f6;">
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased selection:bg-cyan-500 selection:text-white relative transition-colors duration-300">
     
     <!-- Preloader -->
     <div x-init="window.addEventListener('load', () => { setTimeout(() => loaded = true, 500) })" 
@@ -206,7 +197,7 @@
                 });
             };
 
-            const theme = localStorage.getItem('portfolio_theme') === 'light' ? 'light' : 'dark';
+            const theme = localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
             await loadParticles(theme === 'dark');
 
             // Listen for theme changes to reload particles
